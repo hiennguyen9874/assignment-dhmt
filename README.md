@@ -19,9 +19,20 @@ Bài tập lớn giúp sinh viên làm quen với một số kỹ năng trong đ
 
 
 
+Thiết bị gồm các bộ phận tạm gọi như sau: Đế, Xy-lanh, Bàn đỡ, Giá đỡ 1, Giá đỡ 2, Rotor, Thanh trượt, Cơ cấu liên kết, Chốt.
 
+## Tương tác với chương trình
 
-
+- Phím 'D' hoặc 'd': Bật/tắt nguồn sáng thứ hai. Nguồn sáng thứ nhất luôn luôn bật.
+- Phím 1, 2: Điều khiển đế quay xung quanh trục ngược chiều (cùng chiều) kim đồng hồ.
+- Phím 3, 4: Điều khiển xy lanh xoay ngược chiều (cùng chiều) kim đồng hồ.
+- Phím 5, 6: Điều khiển xy lanh tịnh tiến lên, xuống.
+- Phím 7, 8: Điều khiển rotor xoay ngược chiều (cùng chiều) kim đồng hồ.
+- Phím A, a: Bật/tắt chế độ hoạt hình (tự động xoay).
+- Phím W, w: Chuyển đổi qua lại giữa chế độ vẽ khung dây và chế độ tô màu.
+- Phím Y, y: Khoảng cách camera đến trục Oy tăng/giảm.
+- Phím &uparrow;, &downarrow;: Chiều cao camera tăng/giảm.
+- Phím &rightarrow;, &leftarrow;: Camera quay cùng chiều/ngược chiều kim đồng hồ.
 
 
 
