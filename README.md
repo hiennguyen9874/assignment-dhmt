@@ -13,5 +13,7 @@ Bài tập lớn giúp sinh viên làm quen với một số kỹ năng trong đ
 
 ## Xây dựng mô hình
 
-<img src="p1.png">
+<img src="https://github.com/hiennguyen9874/assignment_dhmt/blob/master/Images/p1.png>">
+
+
 
