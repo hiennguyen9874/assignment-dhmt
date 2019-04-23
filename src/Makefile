@@ -6,26 +6,14 @@ CC = g++ -std=c++11
 COMPILER_FLAGS = -Wall
 
 # LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lGL -lGLU -lglut -lGLEW -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor
+LINKER_FLAGS = -lGL -lGLU -lglut -lGLEW -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -Wunknown-pragmas
 
 # OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = a
 
 #This is the target that compiles our executable
-lab2: Lab2.o Mesh.o supportClass.o
-		$(CC) Lab2.o Mesh.o supportClass.o $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
-lab3: Lab3.o Mesh.o supportClass.o
-		$(CC) Lab3.o Mesh.o supportClass.o $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
 ass: assignment.o Mesh.o supportClass.o
 		$(CC) assignment.o Mesh.o supportClass.o $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
-Lab2.o: Lab2.cpp Mesh.h supportClass.h
-		$(CC) Lab2.cpp $(COMPILER_FLAGS) $(LINKER_FLAGS) -c
-
-Lab3.o: Lab3.cpp Mesh.h supportClass.h
-		$(CC) Lab3.cpp $(COMPILER_FLAGS) $(LINKER_FLAGS) -c
 
 assignment.o: assignment.cpp Mesh.h supportClass.h
 		$(CC) assignment.cpp $(COMPILER_FLAGS) $(LINKER_FLAGS) -c

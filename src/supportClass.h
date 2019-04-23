@@ -1,7 +1,7 @@
 #if !defined (_SUPPORT_CLASS)
 #define _SUPPORT_CLASS
 
-// #include <windows.h>
+#include <windows.h>
 #include <math.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
