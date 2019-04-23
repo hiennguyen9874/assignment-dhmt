@@ -92,7 +92,7 @@ float camera_dis;
 float camera_X, camera_Y, camera_Z;
 float lookAt_X, lookAt_Y, lookAt_Z;
 
-bool b4View = false; // Ham chuyen trang thai giua 1 goc nhin va 4 goc nhin
+bool b4View = false;	// Ham chuyen trang thai giua 1 goc nhin va 4 goc nhin
 
 void mySpecialKeyboard(int key, int x, int y)
 {
@@ -500,9 +500,9 @@ void processTimer(int value)
 
 void myInit()
 {
-	camera_angle = 45; // Góc quay camera xung quanh trục Oy
-	camera_height = 3.5; // Chiều cao camera so với mặt phẳng xOz
-	camera_dis = 6.5; // Khoảng cách đến trục Oy
+	camera_angle = -30;	// Góc quay camera xung quanh trục Oy
+	camera_height = 4;	// Chiều cao camera so với mặt phẳng xOz
+	camera_dis = 6.5;		// Khoảng cách đến trục Oy
 
 	lookAt_X = 0;
 	lookAt_Y = 1;
@@ -533,54 +533,67 @@ void create(int N)
 	// Đế 1
 	base1.CreateCylinder(M, base1Height, base1Radius);
 	base1.SetColor(2);
+	base1.CalculateFacesNorm();
 
 	// Đế 2
 	base2.CreateCylinder(M, base2Height, base2Radius);
 	base2.SetColor(2);
+	base2.CalculateFacesNorm();
 
 	// Xy lanh
 	cylinder.CreateCylinder(M, cylinderHeight, cylinderRadius);
 	cylinder.SetColor(3);
+	cylinder.CalculateFacesNorm();
 
 	// Bàn đỡ
 	banDo.CreateCuboid(banDoX, banDoY, banDoZ);
 	banDo.SetColor(4);
+	banDo.CalculateFacesNorm();
 
 	// Đế của giá đỡ 1
 	deGiaDo1.CreateCuboid(deGiaDoX, deGiaDoY, deGiaDoZ);
 	deGiaDo1.SetColor(5);
+	deGiaDo1.CalculateFacesNorm();
 
 	// Đế của giá đỡ 2
 	deGiaDo2.CreateCuboid(deGiaDoX, deGiaDoY, deGiaDoZ);
 	deGiaDo2.SetColor(5);
+	deGiaDo2.CalculateFacesNorm();
 
 	// Giá đỡ 1
 	giaDo1.hinhBanNguyet(N, giaDoRong, giaDoCao, giaDoCaoBanKinhLon, giaDoCaoBanKinhNho);
 	giaDo1.SetColor(6);
+	giaDo1.CalculateFacesNorm();
 
 	// Giá đỡ 2
 	giaDo2.hinhBanNguyet(N, giaDoRong, giaDoCao, giaDoCaoBanKinhLon, giaDoCaoBanKinhNho);
 	giaDo2.SetColor(6);
+	giaDo2.CalculateFacesNorm();
 
 	// Rotor
 	rotor.CreateCylinder(M, rotorCao, rotorBanKinh);
 	rotor.SetColor(7);
+	rotor.CalculateFacesNorm();
 
 	// Chốt
 	chot.btHinhTru(M, chotL1, chotL2, 0, chotD1, chotD2);
 	chot.SetColor(8);
+	chot.CalculateFacesNorm();
 
 	// Cơ cấu liên kết
 	cclk.OVanLoHong(N, cclkBanKinhLon, cclkBanKinhNho, cclkDai, cclkCao);
 	cclk.SetColor(9);
+	cclk.CalculateFacesNorm();
 
 	// Thanh trượt 1
 	tt1.btHinhTru(M, ttL1, ttL2, ttL3, ttD1, ttD2);
 	tt1.SetColor(10);
+	tt1.CalculateFacesNorm();
 
 	// Thanh trượt 2
 	tt2.btHinhTru(M, ttL1, ttL2, ttL3, ttD1, ttD2);
 	tt2.SetColor(10);
+	tt2.CalculateFacesNorm();
 
 }
 
@@ -611,7 +624,7 @@ int main(int argc, char* argv[])
 
 	print();
 
-	int N = 181; // So dinh tren mot nua hinh tron
+	int N = 19; // So dinh tren mot nua hinh tron
 	create(N);
 
 	myInit();

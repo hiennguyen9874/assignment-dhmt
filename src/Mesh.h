@@ -1,4 +1,4 @@
-#if !defined (_MESH_CLASS)
+﻿#if !defined (_MESH_CLASS)
 #define _MESH_CLASS
 
 #include "supportClass.h"
@@ -16,6 +16,8 @@ class Face
 public:
 	int		nVerts;
 	VertexID*	vert;
+
+	Vector3 facenorm; // Chứa pháp tuyến của mặt.
 	
 	Face()
 	{
@@ -90,6 +92,9 @@ public:
 	void hinhBanNguyet(int N, float rong, float cao, float banKinhLon, float banKinhNho);
 	// Lab 3
 	void CreateCylinder(int N, float base1Height, float base1Radius);
+	// Lab 5
+	void CalculateFacesNorm();
+	void Draw();
 
 };
 

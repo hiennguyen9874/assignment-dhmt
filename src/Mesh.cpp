@@ -8,19 +8,19 @@ using namespace std;
 
 float ColorArr[COLORNUM][3] = {
 	{1.0, 0.0, 0.0},
-	{0.0, 1.0, 0.0}, 
-	{0.0, 0.0, 1.0}, 
-	{1.0, 1.0, 0.0}, 
-	{1.0, 0.0, 1.0}, 
-	{0.0, 1.0, 1.0}, 
-	{0.3, 0.3, 0.3}, 
-	{0.5, 0.5, 0.5}, 
-	{0.9, 0.9, 0.9}, 
-	{1.0, 0.5, 0.5}, 
-	{0.5, 1.0, 0.5}, 
-	{0.5, 0.5, 1.0}, 
-	{0.0, 0.0, 0.0}, 
-	{1.0, 1.0, 1.0}};
+	{0.0, 1.0, 0.0},
+	{0.0, 0.0, 1.0},
+	{1.0, 1.0, 0.0},
+	{1.0, 0.0, 1.0},
+	{0.0, 1.0, 1.0},
+	{0.3, 0.3, 0.3},
+	{0.5, 0.5, 0.5},
+	{0.9, 0.9, 0.9},
+	{1.0, 0.5, 0.5},
+	{0.5, 1.0, 0.5},
+	{0.5, 0.5, 1.0},
+	{0.0, 0.0, 0.0},
+	{1.0, 1.0, 1.0} };
 
 void Mesh::DrawWireframe()
 {
@@ -67,6 +67,38 @@ void Mesh::SetColor(int colorIdx)
 		{
 			face[f].vert[v].colorIndex = colorIdx;
 		}
+	}
+}
+
+// Tìm vector pháp tuyến theo phương pháp Newell
+void Mesh::CalculateFacesNorm()
+{
+	for (int f = 0; f < numFaces; f++)
+	{
+		float mx = 0, my = 0, mz = 0;
+		for (int v = 0; v < face[f].nVerts; v++)
+		{
+			int iv = face[f].vert[v].vertIndex;
+			mx += (pt[iv].y - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].y) * (pt[iv].z + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].z);
+			my += (pt[iv].z - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].z) * (pt[iv].x + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].x);
+			mz += (pt[iv].x - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].x) * (pt[iv].y + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].y);
+		}
+		face[f].facenorm.set(mx, my, mz);
+		face[f].facenorm.normalize();
+	}
+}
+
+// Lab 5
+void Mesh::Draw()
+{
+	for (int f = 0; f < numFaces; f++) {
+		glBegin(GL_POLYGON);
+		for (int v = 0; v < face[f].nVerts; v++) {
+			int iv = face[f].vert[v].vertIndex;
+			glNormal3f(face[f].facenorm.x, face[f].facenorm.y, face[f].facenorm.z);
+			glVertex3f(pt[iv].x, pt[iv].y, pt[iv].z);
+		}
+		glEnd();
 	}
 }
 
