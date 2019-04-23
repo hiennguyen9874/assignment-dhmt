@@ -13,7 +13,11 @@ Bài tập lớn giúp sinh viên làm quen với một số kỹ năng trong đ
 
 ## Xây dựng mô hình
 
-<img src="/Images/p1.png" alt="drawing" width="500"/>
+ <p align="center">
+     <img src="/Images/p1.png" alt="drawing" width="500"/>
+ </p>
+
+
 
 
 
