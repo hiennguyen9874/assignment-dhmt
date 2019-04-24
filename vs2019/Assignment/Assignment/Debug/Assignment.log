@@ -1,4 +1,6 @@
-﻿  assignment.cpp
+﻿  Mesh.cpp
+  assignment.cpp
 D:\Do hoa may tinh\Assignment\src\assignment.cpp(122): warning C4101: 'fAngle': unreferenced local variable
 D:\Do hoa may tinh\Assignment\src\assignment.cpp(121): warning C4101: 'fRInc': unreferenced local variable
-  Assignment.vcxproj -> D:\Do hoa may tinh\Assignment\vs 2019\Assignment\Debug\Assignment.exe
+  Generating Code...
+  Assignment.vcxproj -> D:\Do hoa may tinh\Assignment\vs2019\Assignment\Debug\Assignment.exe
