@@ -34,6 +34,5 @@
 \.idea/
 
 cmake-build-debug/
-.vscode/ipch/
-vs2019/Assignment/.vs/Assignment/v16/ipch/
+vs2019/Assignment/.vs/Assignment/v16/ipch/*
 src/.vscode/ipch/

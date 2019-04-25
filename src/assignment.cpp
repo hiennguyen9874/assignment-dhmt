@@ -520,7 +520,7 @@ void myInit()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	//glFrustum(-2.0, 2.0, -2.0, 2.0, 2.0, 100);
+	//glFrustum(-fHalfSize, fHalfSize, -fHalfSize, fHalfSize, fHalfSize, 100);
 	//glMatrixMode(GL_MODELVIEW);
 
 	glOrtho(-fHalfSize, fHalfSize, -fHalfSize, fHalfSize, -1000, 1000);
