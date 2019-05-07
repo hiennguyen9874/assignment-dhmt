@@ -1,3 +1,7 @@
+
+vs2019/Assignment/.vs/Assignment/v16/ipch/*
+src/.vscode/ipch/
+
 # Prerequisites
 *.d
 
@@ -34,5 +38,4 @@ src/*.out
 \.idea/
 
 cmake-build-debug/
-vs2019/Assignment/.vs/Assignment/v16/ipch/*
-src/.vscode/ipch/
+
