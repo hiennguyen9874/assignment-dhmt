@@ -1,4 +1,4 @@
-﻿#include "Mesh.h"
+﻿ #include "Mesh.h"
 #include <cmath>
 #include <iostream>
 using namespace std;
@@ -7,20 +7,20 @@ using namespace std;
 #define COLORNUM 14
 
 float ColorArr[COLORNUM][3] = {
-	{1.0, 0.0, 0.0},
-	{0.0, 1.0, 0.0},
-	{0.0, 0.0, 1.0},
-	{1.0, 1.0, 0.0},
-	{1.0, 0.0, 1.0},
-	{0.0, 1.0, 1.0},
-	{0.3, 0.3, 0.3},
-	{0.5, 0.5, 0.5},
-	{0.9, 0.9, 0.9},
-	{1.0, 0.5, 0.5},
-	{0.5, 1.0, 0.5},
-	{0.5, 0.5, 1.0},
-	{0.0, 0.0, 0.0},
-	{1.0, 1.0, 1.0} };
+	{1.0, 0.0, 0.0}, //0
+	{0.0, 1.0, 0.0}, //1
+	{0.0, 0.0, 1.0}, //2
+	{1.0, 1.0, 0.0}, //3
+	{1.0, 0.0, 1.0}, //4
+	{0.0, 1.0, 1.0}, //5
+	{0.3, 0.3, 0.3}, //6
+	{0.5, 0.5, 0.5}, //7
+	{0.9, 0.9, 0.9}, //8
+	{1.0, 0.5, 0.5}, //9
+	{0.5, 1.0, 0.5}, //10
+	{0.5, 0.5, 1.0}, //11
+	{0.0, 0.0, 0.0}, //12
+	{1.0, 1.0, 1.0}}; //13
 
 void Mesh::DrawWireframe()
 {
@@ -79,27 +79,39 @@ void Mesh::CalculateFacesNorm()
 		for (int v = 0; v < face[f].nVerts; v++)
 		{
 			int iv = face[f].vert[v].vertIndex;
-			mx += (pt[iv].y - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].y) * (pt[iv].z + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].z);
-			my += (pt[iv].z - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].z) * (pt[iv].x + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].x);
-			mz += (pt[iv].x - pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].x) * (pt[iv].y + pt[((iv + 1) >= face[f].nVerts) ? 0 : (iv + 1)].y);
+			int next = face[f].vert[(v + 1) % face[f].nVerts].vertIndex;
+			mx += (pt[iv].y - pt[next].y) * (pt[iv].z + pt[next].z);
+			my += (pt[iv].z - pt[next].z) * (pt[iv].x + pt[next].x);
+			mz += (pt[iv].x - pt[next].x) * (pt[iv].y + pt[next].y);
 		}
 		face[f].facenorm.set(mx, my, mz);
 		face[f].facenorm.normalize();
 	}
 }
 
-// Lab 5
+// To mau cho doi tuong (Lab 5)
 void Mesh::Draw()
 {
-	for (int f = 0; f < numFaces; f++) {
+	for (int f = 0; f < numFaces; f++)
+	{
 		glBegin(GL_POLYGON);
-		for (int v = 0; v < face[f].nVerts; v++) {
+		for (int v = 0; v < face[f].nVerts; v++)
+		{
 			int iv = face[f].vert[v].vertIndex;
 			glNormal3f(face[f].facenorm.x, face[f].facenorm.y, face[f].facenorm.z);
 			glVertex3f(pt[iv].x, pt[iv].y, pt[iv].z);
 		}
 		glEnd();
 	}
+}
+
+// Thiet lap vat lieu cho doi tuong (Lab 5)
+void Mesh::setupMaterial(float ambient[], float diffuse[], float specular[], float shiness)
+{
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shiness);
 }
 
 // Hinh lap phuong

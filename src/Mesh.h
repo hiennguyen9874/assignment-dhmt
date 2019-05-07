@@ -1,32 +1,31 @@
-﻿#if !defined (_MESH_CLASS)
+﻿#if !defined(_MESH_CLASS)
 #define _MESH_CLASS
 
 #include "supportClass.h"
 
-
 class VertexID
 {
-public:
-	int		vertIndex;
-	int		colorIndex;
+  public:
+	int vertIndex;
+	int colorIndex;
 };
 
 class Face
 {
-public:
-	int		nVerts;
-	VertexID*	vert;
+  public:
+	int nVerts;
+	VertexID *vert;
 
 	Vector3 facenorm; // Chứa pháp tuyến của mặt.
-	
+
 	Face()
 	{
-		nVerts	= 0;
-		vert	= NULL;
+		nVerts = 0;
+		vert = NULL;
 	}
 	~Face()
 	{
-		if(vert !=NULL)
+		if (vert != NULL)
 		{
 			delete[] vert;
 			vert = NULL;
@@ -37,24 +36,24 @@ public:
 
 class Mesh
 {
-public:
-	int		numVerts;
-	Point3*		pt;
-	
-	int		numFaces;
-	Face*		face;
+  public:
+	int numVerts;
+	Point3 *pt;
+
+	int numFaces;
+	Face *face;
 
 	float slideX, slideY, slideZ;
 	float rotateX, rotateY, rotateZ;
 	float scaleX, scaleY, scaleZ;
 
-public:
+  public:
 	Mesh()
 	{
-		numVerts	= 0;
-		pt		= NULL;
-		numFaces	= 0;
-		face		= NULL;
+		numVerts = 0;
+		pt = NULL;
+		numFaces = 0;
+		face = NULL;
 		//
 		slideX = 0;
 		slideY = 0;
@@ -71,8 +70,8 @@ public:
 		if (pt != NULL)
 		{
 			delete[] pt;
-		}	
-		if(face != NULL)
+		}
+		if (face != NULL)
 		{
 			delete[] face;
 		}
@@ -85,7 +84,7 @@ public:
 	void SetColor(int colorIdx);
 	// Lab 2
 	void CreateTetrahedron();
-	void CreateCube(float	fSize);
+	void CreateCube(float fSize);
 	void CreateCuboid(float fSizeX, float fSizeY, float fSizeZ);
 	void OVanLoHong(int N, float bKinhLon, float banKinhNho, float chieuDai, float ChieuCao);
 	void btHinhTru(int N, float L1, float L2, float l3, float D1, float D2);
@@ -95,7 +94,7 @@ public:
 	// Lab 5
 	void CalculateFacesNorm();
 	void Draw();
-
+	void setupMaterial(float ambient[], float diffuse[], float specular[], float shiness);
 };
 
 #endif
