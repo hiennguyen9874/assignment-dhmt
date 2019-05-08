@@ -1,2 +1,3 @@
 ﻿- Nộp 1 file duy nhất
 - Ghi tên mssv vào mail khi nộp.
+- Nộp gửi mail
