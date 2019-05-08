@@ -5,14 +5,13 @@
 
 using namespace std;
 
-#define PI 3.1415926
+#define M_PI	3.14159265358979323846
 
 // Tham so
 #pragma region
+// Tham so cua cua so
 int screenWidth = 600;
 int screenHeight = 600;
-
-bool bWireFrame = false;
 
 // Tham so cua vat the
 float base1Radius = 0.8;
@@ -26,8 +25,8 @@ float cylinderRadius = 0.4;
 float cylinderHeight = 1.6;
 float cylinderRotateStep = 5;
 float cylinderTranslationStep = 0.05;
-//float	cylinderOffset = base2Height-cylinderHeight/2;
 float cylinderOffset = base2Height / 2;
+//float	cylinderOffset = base2Height-cylinderHeight/2;
 
 // Bàn đỡ
 float banDoX = 7;
@@ -69,6 +68,7 @@ float ttL3 = 0.6 * banDoX / 2.0;
 float ttD1 = 1.5 * (deGiaDoY + giaDoCao - rotorCao);
 float ttD2 = giaDoCaoBanKinhNho * 2;
 
+// Mesh
 Mesh base1;
 Mesh base2;
 Mesh cylinder;
@@ -84,9 +84,11 @@ Mesh tt1;
 Mesh tt2;
 
 double angle = 0;
-bool au = false;
 
+bool au = false;
+bool bWireFrame = false;
 bool bLight1 = true;
+// bool b4View = false; // Ham chuyen trang thai giua 1 goc nhin va 4 goc nhin
 
 // Tham so cho camera
 float camera_angle;
@@ -95,7 +97,6 @@ float camera_dis;
 float camera_X, camera_Y, camera_Z;
 float lookAt_X, lookAt_Y, lookAt_Z;
 
-// bool b4View = false; // Ham chuyen trang thai giua 1 goc nhin va 4 goc nhin
 #pragma endregion
 
 void mySpecialKeyboard(int key, int x, int y)
@@ -200,25 +201,25 @@ void drawLucGiac(float x, float y, float z, float R, float alpha)
 	glBegin(GL_QUADS);
 	glColor4f(0.3, 1.0, 1.0, alpha);
 	glNormal3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(x + R * cos(-60 * PI / 180), y, z + R * sin(-60 * PI / 180));
+	glVertex3f(x + R * cos(-60 * M_PI / 180), y, z + R * sin(-60 * M_PI / 180));
 	glVertex3f(x + R * cos(0), y, z + R * sin(0));
-	glVertex3f(x + R * cos(60 * PI / 180), y, z + R * sin(60 * PI / 180));
+	glVertex3f(x + R * cos(60 * M_PI / 180), y, z + R * sin(60 * M_PI / 180));
 	glVertex3f(x, y, z);
 	glEnd();
 	glBegin(GL_QUADS);
 	glColor4f(77.0 / 255.0, 166.0 / 255.0, 210.0 / 255.0, alpha);
 	glNormal3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(x + R * cos(60 * PI / 180), y, z + R * sin(60 * PI / 180));
-	glVertex3f(x + R * cos(120 * PI / 180), y, z + R * sin(120 * PI / 180));
-	glVertex3f(x + R * cos(180 * PI / 180), y, z + R * sin(180 * PI / 180));
+	glVertex3f(x + R * cos(60 * M_PI / 180), y, z + R * sin(60 * M_PI / 180));
+	glVertex3f(x + R * cos(120 * M_PI / 180), y, z + R * sin(120 * M_PI / 180));
+	glVertex3f(x + R * cos(180 * M_PI / 180), y, z + R * sin(180 * M_PI / 180));
 	glVertex3f(x, y, z);
 	glEnd();
 	glBegin(GL_QUADS);
 	glColor4f(1.0, 1.0, 1.0, alpha);
 	glNormal3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(x + R * cos(180 * PI / 180), y, z + R * sin(180 * PI / 180));
-	glVertex3f(x + R * cos(240 * PI / 180), y, z + R * sin(240 * PI / 180));
-	glVertex3f(x + R * cos(300 * PI / 180), y, z + R * sin(300 * PI / 180));
+	glVertex3f(x + R * cos(180 * M_PI / 180), y, z + R * sin(180 * M_PI / 180));
+	glVertex3f(x + R * cos(240 * M_PI / 180), y, z + R * sin(240 * M_PI / 180));
+	glVertex3f(x + R * cos(300 * M_PI / 180), y, z + R * sin(300 * M_PI / 180));
 	glVertex3f(x, y, z);
 	glEnd();
 }
@@ -228,9 +229,9 @@ void drawNen(float alpha)
 	float y = 0;
 	glDisable(GL_LIGHTING);
 	glColor3f(1.0f, 1.0f, 1.0f);
-	float d = 0.5, R = d / cos(PI / 6);
+	float d = 0.7, R = d / cos(M_PI / 6);
 	int i = 0;
-	for (float x = -15; x < 15; x += R + R * cos(PI / 3))
+	for (float x = -15; x < 15; x += R + R * cos(M_PI / 3))
 	{
 		float z = (i % 2 == 0) ? -10 : (-10 - d);
 		for (; z < 10; z += 2 * d)
@@ -488,7 +489,7 @@ void drawCCLK()
 
 	glTranslated(0, cylinderHeight + base1Height + cylinderOffset + banDoY + rotorCao + cclkCao / 2.0, 0);
 	glRotatef(cylinder.rotateY + base1.rotateY + 90, 0, 1, 0);
-	glTranslated(0, 0, -rotorBanKinh / 2 * sin(rotor.rotateY * PI / 180));
+	glTranslated(0, 0, -rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180));
 
 
 	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
@@ -512,7 +513,7 @@ void drawTT1()
 	glTranslated(0, cylinderHeight + base1Height + cylinderOffset + banDoY + rotorCao + cclkCao / 2.0, 0);
 	glRotatef(90, 0, 0, 1);
 	glRotatef(cylinder.rotateY + base1.rotateY, 1, 0, 0);
-	glTranslated(0, cclkBanKinhLon + rotorBanKinh / 2 * sin(rotor.rotateY * PI / 180), 0);
+	glTranslated(0, cclkBanKinhLon + rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180), 0);
 
 
 	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
@@ -536,7 +537,7 @@ void drawTT2()
 	glTranslated(0, cylinderHeight + base1Height + cylinderOffset + banDoY + rotorCao + cclkCao / 2.0, 0);
 	glRotatef(-90, 0, 0, 1);
 	glRotatef(-cylinder.rotateY - base1.rotateY, 1, 0, 0);
-	glTranslated(0, cclkBanKinhLon - rotorBanKinh / 2 * sin(rotor.rotateY * PI / 180), 0);
+	glTranslated(0, cclkBanKinhLon - rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180), 0);
 
 	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
 	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -572,17 +573,32 @@ void drawAll()
 
 void myDisplay()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	GLfloat light_position0[] = { 10.0, 10.0, 10.0, 0.0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position0);
 
+	if (bLight1 == true)
+	{
+		glEnable(GL_LIGHT1);
+		GLfloat	diffuse1[] = { 1.0, 1.0, 1.0, 1.0 };
+		GLfloat	specular1[] = { 1.0, 1.0, 1.0, 1.0 };
+		GLfloat	ambient1[] = { 0.0, 0.0, 0.0, 1.0 };
+		GLfloat position1[] = { -10.0, 10.0, -10.0, 0.0 };
+
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse1);
+		glLightfv(GL_LIGHT1, GL_AMBIENT, ambient1);
+		glLightfv(GL_LIGHT1, GL_SPECULAR, specular1);
+		glLightfv(GL_LIGHT1, GL_POSITION, position1);
+	}
+	else
+		glDisable(GL_LIGHT1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	camera_X = camera_dis * sinf(camera_angle * PI / 180);
+	camera_X = camera_dis * sinf(camera_angle * M_PI / 180);
 	camera_Y = camera_height;
-	camera_Z = camera_dis * cosf(camera_angle * PI / 180);
+	camera_Z = camera_dis * cosf(camera_angle * M_PI / 180);
 	gluLookAt(camera_X, camera_Y, camera_Z, lookAt_X, lookAt_Y, lookAt_Z, 0, 1, 0);
 	glViewport(0, 0, screenWidth, screenHeight);
 
@@ -590,9 +606,8 @@ void myDisplay()
 	glClearStencil(0);
 	// Clear depth
 	glClearDepth(1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	// Draw box
+	// Draw
 	drawAll();
 
 	/* Don't update color or depth. */
@@ -602,19 +617,19 @@ void myDisplay()
 	/* Draw 1 into the stencil buffer. */
 	glEnable(GL_STENCIL_TEST); // Enable the stencil buffer
 	glStencilFunc(GL_ALWAYS, 1, 1); // Make the stencil test always pass
-	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // Make pixels in the stencil buffer be set to 1 when the stencil test passes
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // Make M_PIxels in the stencil buffer be set to 1 when the stencil test passes
 
-	drawNen(1.0f); // Set all of the pixels covered by the floor to be 1 in the stencil buffer
+	drawNen(1.0f); // Set all of the M_PIxels covered by the floor to be 1 in the stencil buffer
 
 	/* Re-enable update of color and depth. */
 	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Enable drawing colors to the screen
 	glEnable(GL_DEPTH_TEST); // Enable depth testing
 
 	/* Now, only render where stencil is set to 1. */
-	glStencilFunc(GL_EQUAL, 1, 1); // Make the stencil test pass only when the pixel is 1 in the stencil buffer
+	glStencilFunc(GL_EQUAL, 1, 1); // Make the stencil test pass only when the M_PIxel is 1 in the stencil buffer
 	glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); // Make the stencil buffer not change
 
-	//Draw the cube, reflected vertically, at all pixels where the stencil
+	//Draw the cube, reflected vertically, at all M_PIxels where the stencil
 	//buffer is 1
 	glPushMatrix();
 	glScalef(1, -1, 1);
@@ -672,25 +687,25 @@ void myInit()
 	glLoadIdentity();
 
 	glEnable(GL_NORMALIZE);
+	glShadeModel(GL_SMOOTH);
+	glDepthFunc(GL_LEQUAL);
 	//glEnable(GL_COLOR_MATERIAL);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
 	// Lighting
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+
+	GLfloat lmodel_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
+	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
+
 	GLfloat light_ambient0[] = { 0.0, 0.0, 0.0, 1.0 };
 	GLfloat light_diffuse0[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat light_specular0[] = { 1.0, 1.0, 1.0, 1.0 };
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse0);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient0);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular0);
-
-	GLfloat lmodel_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
-	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
-	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
 }
 
 void create(int N)
