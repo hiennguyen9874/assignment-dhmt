@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define M_PI	3.14159265358979323846
+#define M_PI 3.14159265358979323846
 
 // Tham so
 #pragma region
@@ -96,6 +96,8 @@ float camera_height;
 float camera_dis;
 float camera_X, camera_Y, camera_Z;
 float lookAt_X, lookAt_Y, lookAt_Z;
+
+bool bCamera = true;
 
 #pragma endregion
 
@@ -269,9 +271,9 @@ void drawBase1()
 	glRotatef(base1.rotateY, 0, 1, 0);
 
 	// He so cua vat the
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat diffuse[] = { 1.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat diffuse[] = {1.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	base1.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -290,10 +292,9 @@ void drawBase2()
 	glTranslated(0, base2Height / 2.0 + base1Height, 0);
 	glRotatef(base1.rotateY, 0, 1, 0);
 
-
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat diffuse[] = { 1.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat diffuse[] = {1.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	base2.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -312,9 +313,9 @@ void drawCylinder()
 	glTranslated(0, cylinderHeight / 2.0 + base1Height + cylinderOffset, 0);
 	glRotatef(cylinder.rotateY + base1.rotateY, 0, 1, 0);
 
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat diffuse[] = { 0.2, 0.2, 1.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat diffuse[] = {0.2, 0.2, 1.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	cylinder.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -333,10 +334,9 @@ void drawBanDo()
 	glTranslated(0, cylinderHeight + base1Height + cylinderOffset + banDoY / 2.0, 0);
 	glRotatef(cylinder.rotateY + base1.rotateY, 0, 1, 0);
 
-
-	GLfloat diffuse[] = { 0.0, 1.0, 0.0, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.0, 1.0, 0.0, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	banDo.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -356,10 +356,9 @@ void drawDeGiaDo1()
 	glRotatef(cylinder.rotateY + base1.rotateY, 0, 1, 0);
 	glTranslated(-banDoX / 4, 0, 0);
 
-
-	GLfloat diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	banDo.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -379,9 +378,9 @@ void drawDeGiaDo2()
 	glRotatef(cylinder.rotateY + base1.rotateY, 0, 1, 0);
 	glTranslated(banDoX / 4, 0, 0);
 
-	GLfloat diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	deGiaDo2.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -401,10 +400,9 @@ void drawgiaDo1()
 	glRotatef(cylinder.rotateY + base1.rotateY + 90, 0, 1, 0);
 	glTranslated(0, 0, banDoX / 4);
 
-
-	GLfloat diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	giaDo1.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -424,10 +422,9 @@ void drawgiaDo2()
 	glRotatef(cylinder.rotateY + base1.rotateY + 90, 0, 1, 0);
 	glTranslated(0, 0, -banDoX / 4);
 
-
-	GLfloat diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	giaDo2.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -446,9 +443,9 @@ void drawRotor()
 	glTranslated(0, cylinderHeight + base1Height + cylinderOffset + banDoY + rotorCao / 2.0, 0);
 	glRotatef(rotor.rotateY + cylinder.rotateY + base1.rotateY, 0, 1, 0);
 
-	GLfloat diffuse[] = { 0.5, 0, 0, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0, 0, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	rotor.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -468,10 +465,9 @@ void drawChot()
 	glRotatef(rotor.rotateY + cylinder.rotateY + base1.rotateY, 0, 1, 0);
 	glTranslated(0, 0, -rotorBanKinh / 2);
 
-
-	GLfloat diffuse[] = { 0.5, 0, 0, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {0.5, 0, 0, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	chot.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -491,10 +487,9 @@ void drawCCLK()
 	glRotatef(cylinder.rotateY + base1.rotateY + 90, 0, 1, 0);
 	glTranslated(0, 0, -rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180));
 
-
-	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {1.0, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	cclk.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -515,10 +510,9 @@ void drawTT1()
 	glRotatef(cylinder.rotateY + base1.rotateY, 1, 0, 0);
 	glTranslated(0, cclkBanKinhLon + rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180), 0);
 
-
-	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {1.0, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	tt1.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -539,9 +533,9 @@ void drawTT2()
 	glRotatef(-cylinder.rotateY - base1.rotateY, 1, 0, 0);
 	glTranslated(0, cclkBanKinhLon - rotorBanKinh / 2 * sin(rotor.rotateY * M_PI / 180), 0);
 
-	GLfloat diffuse[] = { 1.0, 0.5, 0.5, 1.0 };
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat specular[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat diffuse[] = {1.0, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat specular[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat shininess = 100.0;
 	tt2.setupMaterial(ambient, diffuse, specular, shininess);
 
@@ -574,16 +568,16 @@ void drawAll()
 void myDisplay()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	GLfloat light_position0[] = { 10.0, 10.0, 10.0, 0.0 };
+	GLfloat light_position0[] = {10.0, 10.0, 10.0, 0.0};
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position0);
 
 	if (bLight1 == true)
 	{
 		glEnable(GL_LIGHT1);
-		GLfloat	diffuse1[] = { 1.0, 1.0, 1.0, 1.0 };
-		GLfloat	specular1[] = { 1.0, 1.0, 1.0, 1.0 };
-		GLfloat	ambient1[] = { 0.0, 0.0, 0.0, 1.0 };
-		GLfloat position1[] = { -10.0, 10.0, -10.0, 0.0 };
+		GLfloat diffuse1[] = {1.0, 1.0, 1.0, 1.0};
+		GLfloat specular1[] = {1.0, 1.0, 1.0, 1.0};
+		GLfloat ambient1[] = {0.0, 0.0, 0.0, 1.0};
+		GLfloat position1[] = {-10.0, 10.0, -10.0, 0.0};
 
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse1);
 		glLightfv(GL_LIGHT1, GL_AMBIENT, ambient1);
@@ -599,50 +593,60 @@ void myDisplay()
 	camera_X = camera_dis * sinf(camera_angle * M_PI / 180);
 	camera_Y = camera_height;
 	camera_Z = camera_dis * cosf(camera_angle * M_PI / 180);
-	gluLookAt(camera_X, camera_Y, camera_Z, lookAt_X, lookAt_Y, lookAt_Z, 0, 1, 0);
+	
+
+	if (camera_dis == 0)
+	{
+		gluLookAt(camera_X, camera_Y, camera_Z, lookAt_X, lookAt_Y, lookAt_Z, sinf(camera_angle * M_PI / 180), 0, cosf(camera_angle * M_PI / 180));
+	}
+	else
+	{
+		gluLookAt(camera_X, camera_Y, camera_Z, lookAt_X, lookAt_Y, lookAt_Z, 0, 1, 0);
+	}
+
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	// Clear the stencil buffer
-	glClearStencil(0);
-	// Clear depth
-	glClearDepth(1.0f);
+	 // Clear the stencil buffer
+	 glClearStencil(0);
+	 // Clear depth
+	 glClearDepth(1.0f);
 
-	// Draw
-	drawAll();
+	 // Draw
+	 drawAll();
 
-	/* Don't update color or depth. */
-	glDisable(GL_DEPTH_TEST); // Disable depth testing
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE); // Disable drawing colors
+	 /* Don't update color or depth. */
+	 glDisable(GL_DEPTH_TEST);							 // Disable depth testing
+	 glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE); // Disable drawing colors
 
-	/* Draw 1 into the stencil buffer. */
-	glEnable(GL_STENCIL_TEST); // Enable the stencil buffer
-	glStencilFunc(GL_ALWAYS, 1, 1); // Make the stencil test always pass
-	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // Make M_PIxels in the stencil buffer be set to 1 when the stencil test passes
+	 /* Draw 1 into the stencil buffer. */
+	 glEnable(GL_STENCIL_TEST);				   // Enable the stencil buffer
+	 glStencilFunc(GL_ALWAYS, 1, 1);			   // Make the stencil test always pass
+	 glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // Make M_PIxels in the stencil buffer be set to 1 when the stencil test passes
 
-	drawNen(1.0f); // Set all of the M_PIxels covered by the floor to be 1 in the stencil buffer
+	 drawNen(1.0f); // Set all of the M_PIxels covered by the floor to be 1 in the stencil buffer
 
-	/* Re-enable update of color and depth. */
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Enable drawing colors to the screen
-	glEnable(GL_DEPTH_TEST); // Enable depth testing
+	 /* Re-enable update of color and depth. */
+	 glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Enable drawing colors to the screen
+	 glEnable(GL_DEPTH_TEST);						 // Enable depth testing
 
-	/* Now, only render where stencil is set to 1. */
-	glStencilFunc(GL_EQUAL, 1, 1); // Make the stencil test pass only when the M_PIxel is 1 in the stencil buffer
-	glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); // Make the stencil buffer not change
+	 /* Now, only render where stencil is set to 1. */
+	 glStencilFunc(GL_EQUAL, 1, 1);			// Make the stencil test pass only when the M_PIxel is 1 in the stencil buffer
+	 glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); // Make the stencil buffer not change
 
-	//Draw the cube, reflected vertically, at all M_PIxels where the stencil
-	//buffer is 1
-	glPushMatrix();
-	glScalef(1, -1, 1);
-	drawAll();
-	glPopMatrix();
+	 //Draw the cube, reflected vertically, at all M_PIxels where the stencil
+	 //buffer is 1
+	 glPushMatrix();
+	 glScalef(1, -1, 1);
+	 drawAll();
+	 glPopMatrix();
 
-	glDisable(GL_STENCIL_TEST); // Disable using the stencil buffer
+	 glDisable(GL_STENCIL_TEST); // Disable using the stencil buffer
 
-	// Blend the floor onto the screen
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	drawNen(0.7f);
-	glDisable(GL_BLEND);
+	 // Blend the floor onto the screen
+	 glEnable(GL_BLEND);
+	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	 drawNen(0.7f);
+	 glDisable(GL_BLEND);
 
 	glFlush();
 	glutSwapBuffers();
@@ -662,9 +666,9 @@ void processTimer(int value)
 
 void myInit()
 {
-	camera_angle = -30;		// Góc quay camera xung quanh trục Oy
-	camera_height = 5.5;	// Chiều cao camera so với mặt phẳng xOz
-	camera_dis = 6.5;		// Khoảng cách đến trục Oy
+	camera_angle = -30;  // Góc quay camera xung quanh trục Oy
+	camera_height = 5.5; // Chiều cao camera so với mặt phẳng xOz
+	camera_dis = 6.5;	// Khoảng cách đến trục Oy
 
 	lookAt_X = 0;
 	lookAt_Y = 1;
@@ -690,19 +694,19 @@ void myInit()
 	glShadeModel(GL_SMOOTH);
 	glDepthFunc(GL_LEQUAL);
 	//glEnable(GL_COLOR_MATERIAL);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// Lighting
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
-	GLfloat lmodel_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat lmodel_ambient[] = {0.0, 0.0, 0.0, 1.0};
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
 	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
 
-	GLfloat light_ambient0[] = { 0.0, 0.0, 0.0, 1.0 };
-	GLfloat light_diffuse0[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_specular0[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_ambient0[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat light_diffuse0[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat light_specular0[] = {1.0, 1.0, 1.0, 1.0};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse0);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient0);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular0);
@@ -781,23 +785,23 @@ void create(int N)
 void print()
 {
 	cout << "1, 2: Rotate the base" << endl
-		<< "3, 4: Rotate the cylinder" << endl
-		<< "5, 6 : Cylinder up / down" << endl
-		<< "7, 8 : Rotate the rotator" << endl
-		<< "W, w : Switch between wireframeand solid mode" << endl
-		<< "A, a : Turn on / off animation" << endl
-		<< "D, d : Turn on / off the 2nd light source" << endl
-		<< "+ : to increase camera distance." << endl
-		<< "- : to decrease camera distance." << endl
-		<< "up arrow : to increase camera height." << endl
-		<< "down arrow : to decrease camera height." << endl
-		<< "< -: to rotate camera clockwise." << endl
-		<< "-> : to rotate camera counterclockwise." << endl;
+		 << "3, 4: Rotate the cylinder" << endl
+		 << "5, 6 : Cylinder up / down" << endl
+		 << "7, 8 : Rotate the rotator" << endl
+		 << "W, w : Switch between wireframeand solid mode" << endl
+		 << "A, a : Turn on / off animation" << endl
+		 << "D, d : Turn on / off the 2nd light source" << endl
+		 << "+ : to increase camera distance." << endl
+		 << "- : to decrease camera distance." << endl
+		 << "up arrow : to increase camera height." << endl
+		 << "down arrow : to decrease camera height." << endl
+		 << "< -: to rotate camera clockwise." << endl
+		 << "-> : to rotate camera counterclockwise." << endl;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-	glutInit(&argc, (char**)argv);								 //initialize the tool kit
+	glutInit(&argc, (char **)argv);								 //initialize the tool kit
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);	//set the display mode
 	glutInitWindowSize(screenWidth, screenHeight);				 //set window size
 	glutInitWindowPosition(100, 100);							 // set window position on screen
@@ -805,7 +809,7 @@ int main(int argc, char* argv[])
 
 	print();
 
-	int N = 19; // So dinh tren mot nua hinh tron
+	int N = 37; // So dinh tren mot nua hinh tron
 	create(N);
 
 	myInit();
