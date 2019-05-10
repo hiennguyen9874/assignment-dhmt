@@ -110,6 +110,8 @@ void mySpecialKeyboard(int key, int x, int y)
 		break;
 	case GLUT_KEY_DOWN:
 		camera_height -= 0.5;
+		if (camera_height < 0)
+			camera_height = 0;
 		break;
 	case GLUT_KEY_RIGHT:
 		camera_angle += 5;
@@ -233,13 +235,11 @@ void drawNen(float alpha)
 	glColor3f(1.0f, 1.0f, 1.0f);
 	float d = 0.7, R = d / cos(M_PI / 6);
 	int i = 0;
-	for (float x = -15; x < 15; x += R + R * cos(M_PI / 3))
+	for (float x = -30; x < 30; x += R + R * cos(M_PI / 3))
 	{
-		float z = (i % 2 == 0) ? -10 : (-10 - d);
-		for (; z < 10; z += 2 * d)
-		{
+		float z = (i % 2 == 0) ? -20 : (-20 - d);
+		for (; z < 20; z += 2 * d)
 			drawLucGiac(x, y, z, R, alpha);
-		}
 		i++;
 	}
 	glEnable(GL_LIGHTING);
@@ -809,7 +809,7 @@ int main(int argc, char *argv[])
 
 	print();
 
-	int N = 37; // So dinh tren mot nua hinh tron
+	int N = 19; // So dinh tren mot nua hinh tron
 	create(N);
 
 	myInit();
