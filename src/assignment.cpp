@@ -606,42 +606,33 @@ void myDisplay()
 
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	 // Clear the stencil buffer
+	 // Clear the stencil buffers
 	 glClearStencil(0);
 	 // Clear depth
 	 glClearDepth(1.0f);
-
 	 // Draw
 	 drawAll();
-
 	 /* Don't update color or depth. */
-	 glDisable(GL_DEPTH_TEST);							 // Disable depth testing
-	 glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE); // Disable drawing colors
-
+	 glDisable(GL_DEPTH_TEST);							
+	 glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE); 
 	 /* Draw 1 into the stencil buffer. */
-	 glEnable(GL_STENCIL_TEST);				   // Enable the stencil buffer
-	 glStencilFunc(GL_ALWAYS, 1, 1);			   // Make the stencil test always pass
-	 glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // Make M_PIxels in the stencil buffer be set to 1 when the stencil test passes
-
-	 drawNen(1.0f); // Set all of the M_PIxels covered by the floor to be 1 in the stencil buffer
-
+	 glEnable(GL_STENCIL_TEST);				 
+	 glStencilFunc(GL_ALWAYS, 1, 1);			   
+	 glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); 
+	 drawNen(1.0f); 
 	 /* Re-enable update of color and depth. */
-	 glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Enable drawing colors to the screen
-	 glEnable(GL_DEPTH_TEST);						 // Enable depth testing
-
+	 glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	 glEnable(GL_DEPTH_TEST);						 
 	 /* Now, only render where stencil is set to 1. */
-	 glStencilFunc(GL_EQUAL, 1, 1);			// Make the stencil test pass only when the M_PIxel is 1 in the stencil buffer
-	 glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); // Make the stencil buffer not change
-
+	 glStencilFunc(GL_EQUAL, 1, 1);			
+	 glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); 
 	 //Draw the cube, reflected vertically, at all M_PIxels where the stencil
 	 //buffer is 1
 	 glPushMatrix();
 	 glScalef(1, -1, 1);
 	 drawAll();
 	 glPopMatrix();
-
-	 glDisable(GL_STENCIL_TEST); // Disable using the stencil buffer
-
+	 glDisable(GL_STENCIL_TEST);
 	 // Blend the floor onto the screen
 	 glEnable(GL_BLEND);
 	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
